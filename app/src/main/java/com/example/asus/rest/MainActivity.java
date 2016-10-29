@@ -81,7 +81,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Greeting doInBackground(Void... params) {
             try {
-                final String url = "http://rest-service.guides.spring.io/greeting";
+                //final String url = "http://rest-service.guides.spring.io/greeting";
+                final String url = "http://10.0.2.2:8080/crud-jersey-service/jornal/noticia/1";
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
                 Greeting greeting = restTemplate.getForObject(url, Greeting.class);
@@ -97,8 +98,8 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Greeting greeting) {
             TextView greetingIdText = (TextView) findViewById(R.id.id_value);
             TextView greetingContentText = (TextView) findViewById(R.id.content_value);
-            greetingIdText.setText(greeting.getId());
-            greetingContentText.setText(greeting.getContent());
+            greetingIdText.setText(greeting.getTitulo());
+            greetingContentText.setText(greeting.getTexto());
         }
 
     }
